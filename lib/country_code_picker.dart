@@ -93,6 +93,7 @@ class CountryCodePicker extends StatefulWidget {
 
   final EdgeInsetsGeometry searchPadding;
 
+  final Color arrowColor;
   const CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -131,6 +132,7 @@ class CountryCodePicker extends StatefulWidget {
     this.countryList = codes,
     this.dialogItemPadding = const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
     this.searchPadding = const EdgeInsets.symmetric(horizontal: 24),
+    this.arrowColor = Colors.grey,
     Key? key,
   }) : super(key: key);
 
@@ -219,8 +221,8 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                           ? const EdgeInsets.only(right: 16.0, left: 8.0)
                           : const EdgeInsets.only(right: 8.0)),
                       child: Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.grey,
+                        Icons.keyboard_arrow_down_outlined,
+                        color: widget.arrowColor,
                         size: widget.flagWidth,
                       )),
                 ),
