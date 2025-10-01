@@ -21,11 +21,19 @@ class CountryCode {
   /// the dial code (+39,+93..)
   final String? dialCode;
 
+  // min chars for country code
+  final String? minLength;
+
+  // max chars for country code
+  final String? maxLength;
+
   CountryCode({
     this.name,
     this.flagUri,
     this.code,
     this.dialCode,
+    this.minLength,
+    this.maxLength,
   });
 
   @Deprecated('Use `fromCountryCode` instead.')
@@ -66,8 +74,7 @@ class CountryCode {
   }
 
   CountryCode localize(BuildContext context) {
-    return this
-      ..name = CountryLocalizations.of(context)?.translate(code) ?? name;
+    return this..name = CountryLocalizations.of(context)?.translate(code) ?? name;
   }
 
   factory CountryCode.fromJson(Map<String, dynamic> json) {
@@ -76,6 +83,8 @@ class CountryCode {
       code: json['code'],
       dialCode: json['dial_code'],
       flagUri: 'flags/${json['code'].toLowerCase()}.png',
+      minLength: json['minLength'],
+      maxLength: json['maxLength'],
     );
   }
 
